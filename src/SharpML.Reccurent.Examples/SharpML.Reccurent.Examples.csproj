@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AdditionDataSetGenerator.cs" />
+    <Compile Include="Data\AdderDataSetGenerator.cs" />
     <Compile Include="Data\XorDataSetGenerator.cs" />
     <Compile Include="ExampleXor.cs" />
     <Compile Include="Program.cs" />

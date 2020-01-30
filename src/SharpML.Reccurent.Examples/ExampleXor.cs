@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using SharpML.Reccurent.Examples.Data;
-using SharpML.Recurrent;
 using SharpML.Recurrent.DataStructs;
 using SharpML.Recurrent.Models;
 using SharpML.Recurrent.Networks;
@@ -17,7 +13,7 @@ namespace SharpML.Reccurent.Examples
         public static void Run()
         {
             Random rng = new Random();
-            DataSet data = new XorDataSetGenerator();
+            DataSet data = new AdditionDataSetGenerator(); //new XorDataSetGenerator();
 
             int inputDimension = 2;
             int hiddenDimension = 3;
@@ -41,19 +37,20 @@ namespace SharpML.Reccurent.Examples
             Trainer.train<NeuralNetwork>(trainingEpochs, learningRate, nn, data, reportEveryNthEpoch, rng);
 
             Console.WriteLine("Training Completed.");
-            Console.WriteLine("Test: 1,1");
+            Console.WriteLine("Test: 0.4 + 0.4");
 
-            Matrix input = new Matrix(new double[] {1, 1});
+            Matrix input = new Matrix(new double[] {0.4, 0.4});
             Graph g = new Graph(false);
             Matrix output = nn.Activate(input, g);
 
-            Console.WriteLine("Test: 1,1. Output:" + output.W[0]);
+            Console.WriteLine("Output:" + output.W[0]);
 
-            Matrix input1 = new Matrix(new double[] { 0, 1 });
+            Console.WriteLine("Test: 0.1 + 0.2");
+            Matrix input1 = new Matrix(new double[] { 0.1, 0.2 });
             Graph g1 = new Graph(false);
             Matrix output1 = nn.Activate(input1, g1);
 
-            Console.WriteLine("Test: 0,1. Output:" + output1.W[0]);
+            Console.WriteLine("Output:" + output1.W[0]);
 
             Console.WriteLine("done.");
         }

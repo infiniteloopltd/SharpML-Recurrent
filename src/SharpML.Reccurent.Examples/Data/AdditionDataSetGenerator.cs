@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using SharpML.Recurrent.Activations;
 using SharpML.Recurrent.DataStructs;
 using SharpML.Recurrent.Loss;
@@ -9,9 +7,9 @@ using SharpML.Recurrent.Networks;
 
 namespace SharpML.Reccurent.Examples.Data
 {
-    public class XorDataSetGenerator : DataSet
+    public class AdditionDataSetGenerator : DataSet
     {
-        public XorDataSetGenerator()
+        public AdditionDataSetGenerator()
         {
             InputDimension = 2;
             OutputDimension = 1;
@@ -25,14 +23,18 @@ namespace SharpML.Reccurent.Examples.Data
         private static List<DataSequence> GetTrainingData()
         {
 
-            var result = new List<DataSequence>
-            {
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {1, 0}, new double[] {1})}),
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {0, 1}, new double[] {1})}),
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {0, 0}, new double[] {0})}),
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {1, 1}, new double[] {0})})
-            };
+            var result = new List<DataSequence>();
 
+    
+            for (var a = 0.0; a < 0.5; a += 0.1)
+            {
+                for (var b = 0.0; b < 0.5; b += 0.1)
+                {
+                    var sum = a + b;
+                    result.Add(new DataSequence(new List<DataStep>() { new DataStep(new[] { a, b }, new[] { sum }) }));
+                }
+            }
+           
             return result;
         }
 

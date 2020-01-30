@@ -9,9 +9,9 @@ using SharpML.Recurrent.Networks;
 
 namespace SharpML.Reccurent.Examples.Data
 {
-    public class XorDataSetGenerator : DataSet
+    public class AdderDataSetGenerator : DataSet
     {
-        public XorDataSetGenerator()
+        public AdderDataSetGenerator()
         {
             InputDimension = 2;
             OutputDimension = 1;
@@ -27,10 +27,10 @@ namespace SharpML.Reccurent.Examples.Data
 
             var result = new List<DataSequence>
             {
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {1, 0}, new double[] {1})}),
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {0, 1}, new double[] {1})}),
+                new DataSequence(new List<DataStep> {new DataStep(new double[] {0.5, 0}, new double[] {0.5})}),
+                new DataSequence(new List<DataStep> {new DataStep(new double[] {0, 0.5}, new double[] {0.5})}),
                 new DataSequence(new List<DataStep> {new DataStep(new double[] {0, 0}, new double[] {0})}),
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {1, 1}, new double[] {0})})
+                new DataSequence(new List<DataStep> {new DataStep(new double[] {0.5, 0.5}, new double[] {1})})
             };
 
             return result;
