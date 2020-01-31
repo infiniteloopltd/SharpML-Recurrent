@@ -8,12 +8,12 @@ using SharpML.Recurrent.Networks;
 
 namespace SharpML.Reccurent.Examples.Data
 {
-    public class AdderDataSetGenerator : DataSet
+    public class ReverserDataSetGenerator : DataSet
     {
-        public AdderDataSetGenerator()
+        public ReverserDataSetGenerator()
         {
             InputDimension = 2;
-            OutputDimension = 1;
+            OutputDimension = 2;
             LossTraining = new LossSumOfSquares();
             LossReporting = new LossSumOfSquares();
             Training = GetTrainingData();
@@ -24,13 +24,17 @@ namespace SharpML.Reccurent.Examples.Data
         private static List<DataSequence> GetTrainingData()
         {
 
-            var result = new List<DataSequence>
+            var result = new List<DataSequence>();
+
+
+            for (var a = 0.0; a < 1; a += 0.1)
             {
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {0.5, 0}, new double[] {0.5})}),
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {0, 0.5}, new double[] {0.5})}),
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {0, 0}, new double[] {0})}),
-                new DataSequence(new List<DataStep> {new DataStep(new double[] {0.5, 0.5}, new double[] {1})})
-            };
+                for (var b = 0.0; b < 1; b += 0.1)
+                {
+                    var sum = a + b;
+                    result.Add(new DataSequence(new List<DataStep>() { new DataStep(new[] { a, b }, new[] { b, a }) }));
+                }
+            }
 
             return result;
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using SharpML.Recurrent.Activations;
 using SharpML.Recurrent.DataStructs;

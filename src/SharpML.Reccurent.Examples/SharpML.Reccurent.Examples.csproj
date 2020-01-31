@@ -34,17 +34,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ReverserDataSetGenerator.cs" />
     <Compile Include="Data\AdditionDataSetGenerator.cs" />
     <Compile Include="Data\AdderDataSetGenerator.cs" />
     <Compile Include="Data\XorDataSetGenerator.cs" />
-    <Compile Include="ExampleXor.cs" />
+    <Compile Include="Example.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace SharpML.Reccurent.Examples
@@ -11,7 +10,7 @@ namespace SharpML.Reccurent.Examples
         {
             //ExampleDsr.Run(); incomplete
 
-            ExampleXor.Run();
+            Example.Run();
         }
     }
 }
