@@ -36,6 +36,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CSVDataSetEncoder.cs" />
     <Compile Include="Data\ReverserDataSetGenerator.cs" />
     <Compile Include="Data\AdditionDataSetGenerator.cs" />
     <Compile Include="Data\AdderDataSetGenerator.cs" />
@@ -53,6 +54,11 @@
       <Project>{07f1480b-7cb3-4c18-ba5f-14a40456f4ff}</Project>
       <Name>SharpML.Recurrent</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="6-back-10k.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

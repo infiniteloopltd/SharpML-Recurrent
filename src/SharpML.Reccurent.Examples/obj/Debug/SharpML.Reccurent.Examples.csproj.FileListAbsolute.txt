@@ -29,3 +29,4 @@ C:\research\ai\SharpML-Recurrent\src\SharpML.Reccurent.Examples\obj\Debug\SharpM
 C:\research\ai\SharpML-Recurrent\src\SharpML.Reccurent.Examples\obj\Debug\SharpML.Reccurent.Examples.csproj.CopyComplete
 C:\research\ai\SharpML-Recurrent\src\SharpML.Reccurent.Examples\obj\Debug\SharpML.Reccurent.Examples.exe
 C:\research\ai\SharpML-Recurrent\src\SharpML.Reccurent.Examples\obj\Debug\SharpML.Reccurent.Examples.pdb
+C:\research\ai\SharpML-Recurrent\src\SharpML.Reccurent.Examples\bin\Debug\6-back-10k.csv

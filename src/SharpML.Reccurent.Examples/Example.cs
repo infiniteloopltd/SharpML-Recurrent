@@ -13,49 +13,48 @@ namespace SharpML.Reccurent.Examples
     {
         public static void Run()
         {
-            var rng = new Random();
-            DataSet data = new ReverserDataSetGenerator(); //new XorDataSetGenerator();
+          
 
-            const int inputDimension = 2;
-            const int hiddenDimension = 5;
-            const int outputDimension = 2;
+            var rng = new Random();
+            DataSet data = new CSVDataSetEncoder("6-back-10k.csv", false);
+            int hiddenDimension = data.InputDimension + data.OutputDimension;
             const int hiddenLayers = 1;
             const double learningRate = 0.001;
             const double initParamsStdDev = 0.08;
             INetwork nn;
             const int reportEveryNthEpoch = 10;
-            const int trainingEpochs = 10000;
-            var strModelFile = AppDomain.CurrentDomain.BaseDirectory + @"model.bin";
+            const int trainingEpochs = 500;
+            var strModelFile = AppDomain.CurrentDomain.BaseDirectory + @"6-back-10k.bin";
             if (File.Exists(strModelFile))
             {
                 nn = Binary.ReadFromBinary<NeuralNetwork>(strModelFile);
             }
             else
             {
-                nn = NetworkBuilder.MakeFeedForward(inputDimension,
+                nn = NetworkBuilder.MakeFeedForward(data.InputDimension,
                     hiddenDimension,
                     hiddenLayers,
-                    outputDimension,
+                    data.OutputDimension,
                     data.GetModelOutputUnitToUse(),
                     data.GetModelOutputUnitToUse(),
                     initParamsStdDev, rng);
                 Trainer.train<NeuralNetwork>(trainingEpochs, learningRate, nn, data, reportEveryNthEpoch, true, true, strModelFile, rng);
                 Console.WriteLine("Training Completed.");
             }
-            Console.WriteLine("Test: 0.4 + 0.3");
+            Console.WriteLine("Test: 4400VW"); // In training set
 
-            var input = new Matrix(new[] {0.4, 0.3});
+            var input = new Matrix(CSVDataSetEncoder.StringToDoubleArray("4400VW"));
             var g = new Graph(false);
             var output = nn.Activate(input, g);
 
-            Console.WriteLine("Output:" + output.W[0] + " - " + output.W[1]);
+            Console.WriteLine("Output:" + CSVDataSetEncoder.DoubleArrayToString(output.W));
 
-            Console.WriteLine("Test: 0.1 + 0.2");
-            var input1 = new Matrix(new[] { 0.1, 0.2 });
+            Console.WriteLine("Test: A400V4"); // not in training set
+            var input1 = new Matrix(CSVDataSetEncoder.StringToDoubleArray("A400V4"));
             var g1 = new Graph(false);
             var output1 = nn.Activate(input1, g1);
 
-            Console.WriteLine("Output:" + output1.W[0] + " - " + output1.W[1]);
+            Console.WriteLine("Output:" + CSVDataSetEncoder.DoubleArrayToString(output1.W));
 
             Console.WriteLine("done.");
         }
